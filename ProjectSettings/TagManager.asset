@@ -3,19 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - PowerUp
+  - PackinTable
+  - DispatchBox
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Item
+  - PowerUp
+  - Wall
+  - Dispatch
+  - Table
   - 
   - 
   - 
