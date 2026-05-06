@@ -21,6 +21,33 @@ public class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        // Solo se ejecuta una vez al presionar (no mientras se mantiene)
+        if (!context.performed) return;
+
+        // Buscar todos los items cercanos y intentar recoger
+        Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+        foreach (Collider2D col in nearby)
+        {
+            ItemPickup item = col.GetComponent<ItemPickup>();
+            if (item != null)
+            {
+                item.TryPickUp();
+                return;
+            }
+        }
+    }
+
+    public void OnDrop(InputAction.CallbackContext context)
+{
+    if (!context.performed) return;
+
+    PlayerInventory inv = GetComponent<PlayerInventory>();
+    if (inv != null) inv.RemoveItem();
+    Debug.Log("Dropped item");
+}
+
     void FixedUpdate()
     {
         Vector2 movement = moveInput.normalized;
