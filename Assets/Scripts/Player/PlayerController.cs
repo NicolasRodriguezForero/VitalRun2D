@@ -18,7 +18,21 @@ public class PlayerController : MonoBehaviour
     // Este método lo conectas desde el componente Player Input
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        Vector2 input = context.ReadValue<Vector2>();
+
+        // Solo permitir un eje a la vez (priorizar el de mayor magnitud)
+        if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
+        {
+            moveInput = new Vector2(input.x, 0);
+        }
+        else if (Mathf.Abs(input.y) > 0)
+        {
+            moveInput = new Vector2(0, input.y);
+        }
+        else
+        {
+            moveInput = Vector2.zero;
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
