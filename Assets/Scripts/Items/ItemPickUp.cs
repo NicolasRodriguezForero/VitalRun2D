@@ -43,7 +43,6 @@ public class ItemPickup : MonoBehaviour
     // Lo llama el PlayerController cuando se presiona Interact
     public void TryPickUp()
     {
-        Debug.Log("TryPickUp llamado. playerNearby=" + playerNearby + " inventory=" + (playerInventory != null));
         if (!playerNearby || playerInventory == null) return;
 
         if (playerInventory.CanPickUp())
@@ -69,24 +68,18 @@ public class ItemPickup : MonoBehaviour
         spriteRenderer.enabled = true;
         itemCollider.enabled = true;
 
-        Debug.Log("Item reaparecio. Verificando jugador cercano...");
-
         Collider2D[] overlapping = Physics2D.OverlapBoxAll(
             transform.position,
             itemCollider.bounds.size,
             0f
         );
 
-        Debug.Log("Colliders encontrados: " + overlapping.Length);
-
         foreach (Collider2D col in overlapping)
         {
-            Debug.Log("Detectado: " + col.name + " con tag: " + col.tag);
             if (col.CompareTag("Player"))
             {
                 playerNearby = true;
                 playerInventory = col.GetComponent<PlayerInventory>();
-                Debug.Log("Jugador detectado en respawn!");
                 break;
             }
         }

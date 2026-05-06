@@ -96,7 +96,7 @@ public class PackingTable : MonoBehaviour
         // Crear la caja
         if (boxPrefab != null)
         {
-            Vector3 boxPos = transform.position + new Vector3(0, 1.5f, 0);
+            Vector3 boxPos = transform.position + new Vector3(0, 0, 0);
             Instantiate(boxPrefab, boxPos, Quaternion.identity);
             Debug.Log("Caja lista!");
         }
