@@ -22,22 +22,37 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnInteract(InputAction.CallbackContext context)
-    {
-        // Solo se ejecuta una vez al presionar (no mientras se mantiene)
-        if (!context.performed) return;
+{
+    if (!context.performed) return;
 
-        // Buscar todos los items cercanos y intentar recoger
-        Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+    Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+
+    // Primero intentar depositar en mesa (si tiene item)
+    PlayerInventory inv = GetComponent<PlayerInventory>();
+    if (inv != null && inv.GetCurrentItem() != null)
+    {
         foreach (Collider2D col in nearby)
         {
-            ItemPickup item = col.GetComponent<ItemPickup>();
-            if (item != null)
+            PackingTable table = col.GetComponent<PackingTable>();
+            if (table != null)
             {
-                item.TryPickUp();
+                table.TryDeposit();
                 return;
             }
         }
     }
+
+    // Si no hay mesa o no tiene item, intentar recoger
+    foreach (Collider2D col in nearby)
+    {
+        ItemPickup item = col.GetComponent<ItemPickup>();
+        if (item != null)
+        {
+            item.TryPickUp();
+            return;
+        }
+    }
+}
 
     public void OnDrop(InputAction.CallbackContext context)
 {
