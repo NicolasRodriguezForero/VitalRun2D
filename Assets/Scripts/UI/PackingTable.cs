@@ -115,12 +115,14 @@ public class PackingTable : MonoBehaviour
             yield return null;
         }
 
-        // Crear la caja
+        // Crear la caja con el color y orden correspondiente
         if (boxPrefab != null)
         {
             Vector3 boxPos = transform.position + new Vector3(0, 0, 0);
-            Instantiate(boxPrefab, boxPos, Quaternion.identity);
-            Debug.Log("Caja lista para " + currentOrder.destination + "!");
+            GameObject newBox = Instantiate(boxPrefab, boxPos, Quaternion.identity);
+            Box boxScript = newBox.GetComponent<Box>();
+            if (boxScript != null) boxScript.SetOrder(currentOrder);
+            Debug.Log("Caja " + currentOrder.boxColor + " lista para " + currentOrder.destination + "!");
         }
 
         // Notificar al OrderManager
