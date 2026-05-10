@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class PackingTable : MonoBehaviour
 {
-    [Header("Configuración temporal (hasta Fase 6)")]
-    public List<ItemData> requiredItems = new List<ItemData>();
+    [Header("Configuración")]
     public GameObject boxPrefab;
+    public float packingTime = 10f;
 
     [Header("UI")]
     public Slider progressBar;
 
-    [Header("Timing")]
-    public float packingTime = 10f;
-
+    private OrderData currentOrder;
     private List<ItemData> depositedItems = new List<ItemData>();
     private bool isPacking = false;
     private bool playerNearby = false;
@@ -43,7 +41,6 @@ public class PackingTable : MonoBehaviour
         }
     }
 
-    // Lo llama el PlayerController cuando se presiona Interact
     public void TryDeposit()
     {
         if (!playerNearby || playerInventory == null || isPacking) return;
@@ -55,29 +52,54 @@ public class PackingTable : MonoBehaviour
             return;
         }
 
-        // Verificar si este item es necesario
-        if (requiredItems.Contains(currentItem) && !depositedItems.Contains(currentItem))
+        // Si la mesa no tiene orden asignada, asignarle una que necesite este item
+        if (currentOrder == null)
+        {
+            currentOrder = FindOrderForItem(currentItem);
+            if (currentOrder == null)
+            {
+                Debug.Log("Ninguna orden activa necesita este item");
+                return;
+            }
+            Debug.Log("Mesa asignada a orden: " + currentOrder.destination);
+        }
+
+        // Verificar si el item es necesario para la orden actual
+        if (currentOrder.requiredItems.Contains(currentItem) && !depositedItems.Contains(currentItem))
         {
             depositedItems.Add(currentItem);
             playerInventory.RemoveItem();
-            Debug.Log("Depositado: " + currentItem.itemName + " (" + depositedItems.Count + "/" + requiredItems.Count + ")");
+            Debug.Log("Depositado: " + currentItem.itemName + " (" + depositedItems.Count + "/" + currentOrder.requiredItems.Count + ")");
 
-            // Si ya están todos: empezar a empaquetar
-            if (depositedItems.Count == requiredItems.Count)
+            if (depositedItems.Count == currentOrder.requiredItems.Count)
             {
                 StartCoroutine(PackBox());
             }
         }
         else
         {
-            Debug.Log("Este item no es necesario o ya fue depositado");
+            Debug.Log("Este item no sirve para la orden actual");
         }
+    }
+
+    OrderData FindOrderForItem(ItemData item)
+    {
+        if (OrderManager.Instance == null) return null;
+
+        foreach (OrderData order in OrderManager.Instance.GetActiveOrders())
+        {
+            if (order.requiredItems.Contains(item))
+            {
+                return order;
+            }
+        }
+        return null;
     }
 
     IEnumerator PackBox()
     {
         isPacking = true;
-        Debug.Log("Empaquetando...");
+        Debug.Log("Empaquetando para " + currentOrder.destination + "...");
 
         if (progressBar != null)
         {
@@ -98,10 +120,14 @@ public class PackingTable : MonoBehaviour
         {
             Vector3 boxPos = transform.position + new Vector3(0, 0, 0);
             Instantiate(boxPrefab, boxPos, Quaternion.identity);
-            Debug.Log("Caja lista!");
+            Debug.Log("Caja lista para " + currentOrder.destination + "!");
         }
 
+        // Notificar al OrderManager
+        OrderManager.Instance.CompleteOrder(currentOrder);
+
         // Resetear mesa
+        currentOrder = null;
         depositedItems.Clear();
         if (progressBar != null) progressBar.gameObject.SetActive(false);
         isPacking = false;
