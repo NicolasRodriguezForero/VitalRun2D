@@ -36,46 +36,67 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnInteract(InputAction.CallbackContext context)
-{
-    if (!context.performed) return;
-
-    Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, 1.5f);
-
-    // Primero intentar depositar en mesa (si tiene item)
-    PlayerInventory inv = GetComponent<PlayerInventory>();
-    if (inv != null && inv.GetCurrentItem() != null)
     {
+        if (!context.performed) return;
+
+        Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+        PlayerInventory inv = GetComponent<PlayerInventory>();
+
+        // Si tiene item: intentar depositar en mesa
+        if (inv != null && inv.GetCurrentItem() != null)
+        {
+            foreach (Collider2D col in nearby)
+            {
+                PackingTable table = col.GetComponent<PackingTable>();
+                if (table != null)
+                {
+                    table.TryDeposit();
+                    return;
+                }
+            }
+        }
+
+        // Si tiene caja: intentar entregar en buzón
+        if (inv != null && inv.GetCurrentBox() != null)
+        {
+            foreach (Collider2D col in nearby)
+            {
+                DispatchBox dispatch = col.GetComponent<DispatchBox>();
+                if (dispatch != null)
+                {
+                    dispatch.TryDeliver();
+                    return;
+                }
+            }
+        }
+
+        // Si no tiene nada: intentar recoger item o caja
         foreach (Collider2D col in nearby)
         {
-            PackingTable table = col.GetComponent<PackingTable>();
-            if (table != null)
+            ItemPickup item = col.GetComponent<ItemPickup>();
+            if (item != null)
             {
-                table.TryDeposit();
+                item.TryPickUp();
+                return;
+            }
+
+            Box box = col.GetComponent<Box>();
+            if (box != null)
+            {
+                box.TryPickUp();
                 return;
             }
         }
     }
 
-    // Si no hay mesa o no tiene item, intentar recoger
-    foreach (Collider2D col in nearby)
-    {
-        ItemPickup item = col.GetComponent<ItemPickup>();
-        if (item != null)
-        {
-            item.TryPickUp();
-            return;
-        }
-    }
-}
-
     public void OnDrop(InputAction.CallbackContext context)
-{
-    if (!context.performed) return;
+    {
+        if (!context.performed) return;
 
-    PlayerInventory inv = GetComponent<PlayerInventory>();
-    if (inv != null) inv.RemoveItem();
-    Debug.Log("Dropped item");
-}
+        PlayerInventory inv = GetComponent<PlayerInventory>();
+        if (inv != null) inv.RemoveItem();
+        Debug.Log("Dropped item");
+    }
 
     void FixedUpdate()
     {
