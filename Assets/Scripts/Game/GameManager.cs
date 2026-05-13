@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [SerializeField] private ResultsUI resultsUI;
+
     private bool gameActive = false;
 
     void Awake()
@@ -23,15 +25,13 @@ public class GameManager : MonoBehaviour
     {
         gameActive = true;
         GameTimer.Instance.StartTimer();
-        // Aquí se activará spawning cuando exista
     }
 
     public void EndGame()
     {
         gameActive = false;
         GameTimer.Instance.StopTimer();
-        Debug.Log("¡Juego terminado!");
-        // Aquí mostraremos la pantalla de resultados en Paso 4
+        resultsUI.ShowResults(0, 0);
     }
 
     public bool IsGameActive()
