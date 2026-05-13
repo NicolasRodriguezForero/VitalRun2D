@@ -19,6 +19,13 @@ public class PowerupInventory : MonoBehaviour
     public bool IsCarritoActive => carritoActivo;
     public int CarritoMaxItems => carritoMaxItems;
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) UseSlot(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) UseSlot(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) UseSlot(2);
+    }
+
     public bool AddPowerup(PowerupType type)
     {
         if (slots.Count >= maxSlots)
