@@ -239,7 +239,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -3.579877}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -250,7 +250,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 8.159754}
   m_EdgeRadius: 0
 --- !u!1 &46338913
 GameObject:
@@ -1876,6 +1876,7 @@ GameObject:
   - component: {fileID: 394161472}
   - component: {fileID: 394161473}
   - component: {fileID: 394161474}
+  - component: {fileID: 394161475}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2126,6 +2127,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxItems: 3
+--- !u!114 &394161475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394161466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e1d578e1c1bfd4ba8e4f31cd763260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSlots: 3
+  relojSegundos: 5
+  carritoDuracion: 15
+  carritoMaxItems: 2
 --- !u!4 &396473150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5041984445402776629, guid: 89d37cbd4a30e7542b2c3a1b4286ae78, type: 3}
