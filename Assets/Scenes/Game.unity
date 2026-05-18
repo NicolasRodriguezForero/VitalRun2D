@@ -1364,7 +1364,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -6.359049, y: 0.67188966}
@@ -2105,6 +2105,7 @@ Transform:
   - {fileID: 359886974}
   - {fileID: 686864564}
   - {fileID: 1301288663}
+  - {fileID: 884887525}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &394161466
@@ -2812,7 +2813,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.9445784, y: -3.4273515}
@@ -3531,6 +3532,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &884887524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 884887525}
+  - component: {fileID: 884887526}
+  m_Layer: 0
+  m_Name: RoomBlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &884887525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884887524}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 387539252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &884887526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884887524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3270b0e9befea5f4a9ca325d97d58297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms:
+  - {fileID: 1215517287}
+  - {fileID: 1173718833}
+  - {fileID: 1894649254}
+  intervaloEntreBloqueos: 25
+  duracionBloqueo: 10
 --- !u!1 &887605434
 GameObject:
   m_ObjectHideFlags: 0
@@ -4915,6 +4966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1173718832}
+  - component: {fileID: 1173718833}
   m_Layer: 0
   m_Name: Este
   m_TagString: Untagged
@@ -4940,6 +4992,22 @@ Transform:
   - {fileID: 353215126}
   m_Father: {fileID: 1230916881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1173718833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173718831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269b038a4ba638c49b514b4058dafa2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: Este
+  blockerCollider: {fileID: 1173762330}
+  darkOverlay: {fileID: 620337978}
+  lockIcon: {fileID: 353215125}
 --- !u!1 &1173762328
 GameObject:
   m_ObjectHideFlags: 0
@@ -5001,7 +5069,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 7.3628883, y: 0.67188966}
@@ -5330,6 +5398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1215517286}
+  - component: {fileID: 1215517287}
   m_Layer: 0
   m_Name: Norte
   m_TagString: Untagged
@@ -5355,6 +5424,22 @@ Transform:
   - {fileID: 1024760847}
   m_Father: {fileID: 1230916881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215517287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215517285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269b038a4ba638c49b514b4058dafa2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: Norte
+  blockerCollider: {fileID: 559314337}
+  darkOverlay: {fileID: 1432150237}
+  lockIcon: {fileID: 1024760846}
 --- !u!1 &1230151817
 GameObject:
   m_ObjectHideFlags: 0
@@ -7865,6 +7950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1894649253}
+  - component: {fileID: 1894649254}
   m_Layer: 0
   m_Name: Oeste
   m_TagString: Untagged
@@ -7890,6 +7976,22 @@ Transform:
   - {fileID: 318697244}
   m_Father: {fileID: 1230916881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1894649254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894649252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269b038a4ba638c49b514b4058dafa2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: Oeste
+  blockerCollider: {fileID: 212711535}
+  darkOverlay: {fileID: 649260768}
+  lockIcon: {fileID: 318697243}
 --- !u!1 &1913772414
 GameObject:
   m_ObjectHideFlags: 0
