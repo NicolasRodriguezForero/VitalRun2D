@@ -8,8 +8,8 @@ public class OrderManager : MonoBehaviour
     [Header("Configuración")]
     public List<OrderData> availableOrders = new List<OrderData>();
     public int maxActiveOrders = 3;
-
     private List<OrderData> activeOrders = new List<OrderData>();
+    public int CompletedOrders { get; private set; } = 0;
 
     void Awake()
     {
@@ -49,7 +49,8 @@ public class OrderManager : MonoBehaviour
         if (activeOrders.Contains(order))
         {
             activeOrders.Remove(order);
-            Debug.Log("Orden completada: " + order.destination);
+            CompletedOrders++;
+            Debug.Log("Orden completada: " + order.destination + " (total: " + CompletedOrders + ")");
             GenerateNewOrder();
         }
     }
