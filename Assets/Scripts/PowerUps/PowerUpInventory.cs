@@ -8,7 +8,8 @@ public class PowerupInventory : MonoBehaviour
     [SerializeField] private int maxSlots = 3;
 
     [Header("Parámetros de potenciadores")]
-    [SerializeField] private float relojSegundos = 5f;
+    [SerializeField] private float velocidadDuracion = 5f;
+    [SerializeField] private float velocidadMultiplicador = 1.5f;
     [SerializeField] private float carritoDuracion = 15f;
     [SerializeField] private int carritoMaxItems = 2;
 
@@ -53,9 +54,16 @@ public class PowerupInventory : MonoBehaviour
     {
         switch (type)
         {
-            case PowerupType.Reloj:
-                GameTimer.Instance.AddTime(relojSegundos);
-                Debug.Log("Reloj usado: +" + relojSegundos + " seg");
+            case PowerupType.Velocidad:
+                PlayerController player = GetComponent<PlayerController>();
+                if (player != null)
+                {
+                    player.ApplySpeedBoost(velocidadMultiplicador, velocidadDuracion);
+                }
+                else
+                {
+                    Debug.LogWarning("PowerupInventory: no se encontró PlayerController en el mismo GameObject");
+                }
                 break;
 
             case PowerupType.Carrito:

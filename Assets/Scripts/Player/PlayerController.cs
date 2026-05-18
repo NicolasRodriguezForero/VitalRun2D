@@ -5,6 +5,10 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
 
+    // --- Sistema de boost de velocidad ---
+    private float originalSpeed;
+    private Coroutine speedBoostCoroutine;
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Animator animator;
@@ -13,8 +17,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        originalSpeed = speed; // <-- AGREGAR esta línea
     }
-
     // Este método lo conectas desde el componente Player Input
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -113,5 +117,28 @@ public class PlayerController : MonoBehaviour
                 animator.SetFloat("MoveY", movement.y);
             }
         }
+    }
+
+    /// <summary>
+    /// Aplica un boost de velocidad temporal. Si ya hay un boost activo, lo cancela y aplica el nuevo.
+    /// </summary>
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        if (speedBoostCoroutine != null)
+        {
+            StopCoroutine(speedBoostCoroutine);
+            speed = originalSpeed; // restaurar antes de aplicar el nuevo
+        }
+        speedBoostCoroutine = StartCoroutine(SpeedBoostCoroutine(multiplier, duration));
+    }
+
+    private System.Collections.IEnumerator SpeedBoostCoroutine(float multiplier, float duration)
+    {
+        speed = originalSpeed * multiplier;
+        Debug.Log("Velocidad x" + multiplier + " activada por " + duration + " seg");
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+        speedBoostCoroutine = null;
+        Debug.Log("Velocidad restaurada a " + originalSpeed);
     }
 }

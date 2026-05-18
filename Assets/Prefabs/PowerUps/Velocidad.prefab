@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 500364369336120025}
   - component: {fileID: 8463139257318536536}
   m_Layer: 0
-  m_Name: Reloj
+  m_Name: Velocidad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,6 +1,6 @@
 public enum PowerupType
 {
-    Reloj,
+    Velocidad,
     Carrito,
     DoblePuntuacion
 }
