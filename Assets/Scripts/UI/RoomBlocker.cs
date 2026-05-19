@@ -54,6 +54,13 @@ public class RoomBlocker : MonoBehaviour
 
             if (habitacionElegida != null)
             {
+                // Esperar a que el jugador salga antes de cerrar
+                if (habitacionElegida.PlayerInside)
+                {
+                    Debug.Log($"[RoomBlocker] Jugador dentro de {habitacionElegida.roomName}, esperando que salga...");
+                    yield return new WaitUntil(() => !habitacionElegida.PlayerInside);
+                }
+
                 habitacionElegida.Block();
                 Debug.Log($"[RoomBlocker] Bloqueada: {habitacionElegida.roomName}");
 

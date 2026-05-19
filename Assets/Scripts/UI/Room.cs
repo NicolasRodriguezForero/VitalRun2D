@@ -23,6 +23,14 @@ public class Room : MonoBehaviour
     /// <summary>True si la habitación está actualmente bloqueada.</summary>
     public bool IsBlocked { get; private set; }
 
+    /// <summary>True si el jugador está actualmente dentro de la habitación.</summary>
+    public bool PlayerInside { get; private set; }
+
+    public void SetPlayerInside(bool inside)
+    {
+        PlayerInside = inside;
+    }
+
     private void Awake()
     {
         // Estado inicial: desbloqueada
