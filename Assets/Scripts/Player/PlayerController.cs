@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
+    private Vector2 rawInput;
     private Animator animator;
 
     void Start()
@@ -24,19 +25,20 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 input = context.ReadValue<Vector2>();
 
-        // Solo permitir un eje a la vez (priorizar el de mayor magnitud)
-        if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
-        {
-            moveInput = new Vector2(input.x, 0);
-        }
-        else if (Mathf.Abs(input.y) > 0)
-        {
-            moveInput = new Vector2(0, input.y);
-        }
-        else
-        {
+        bool xJustPressed = input.x != 0 && rawInput.x == 0;
+        bool yJustPressed = input.y != 0 && rawInput.y == 0;
+        rawInput = input;
+
+        if (input == Vector2.zero)
             moveInput = Vector2.zero;
-        }
+        else if (xJustPressed)
+            moveInput = new Vector2(input.x, 0);
+        else if (yJustPressed)
+            moveInput = new Vector2(0, input.y);
+        else if (input.x == 0)
+            moveInput = new Vector2(0, input.y);
+        else if (input.y == 0)
+            moveInput = new Vector2(input.x, 0);
     }
 
     public void OnInteract(InputAction.CallbackContext context)
