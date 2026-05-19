@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class ScoreManager : MonoBehaviour
 
     [Header("Multiplicadores")]
     public bool doublePointsActive = false;
+
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     void Awake()
     {
@@ -56,6 +60,7 @@ public class ScoreManager : MonoBehaviour
 
         int finalPoints = Mathf.RoundToInt(points * multiplier);
         totalScore += finalPoints;
+        UpdateScoreDisplay();
 
         Debug.Log("+" + finalPoints + " pts (combo: " + currentCombo + ", multiplicador: " + multiplier + "x) | Total: " + totalScore);
     }
@@ -68,5 +73,11 @@ public class ScoreManager : MonoBehaviour
             currentCombo = 0;
             timeSinceLastDelivery = 0f;
         }
+    }
+
+    private void UpdateScoreDisplay()
+    {
+        if (scoreText != null)
+            scoreText.text = totalScore.ToString();
     }
 }
