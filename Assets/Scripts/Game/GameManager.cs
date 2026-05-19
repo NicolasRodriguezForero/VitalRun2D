@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         gameActive = false;
         GameTimer.Instance.StopTimer();
+        Time.timeScale = 0;
 
         int finalScore = ScoreManager.Instance != null ? ScoreManager.Instance.totalScore : 0;
         int finalOrders = OrderManager.Instance != null ? OrderManager.Instance.CompletedOrders : 0;

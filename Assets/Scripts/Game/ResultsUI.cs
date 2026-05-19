@@ -23,11 +23,13 @@ public class ResultsUI : MonoBehaviour
 
     public void OnPlayAgain()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnMainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 }
