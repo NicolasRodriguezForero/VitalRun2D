@@ -7023,6 +7023,7 @@ MonoBehaviour:
   currentCombo: 0
   comboTimeLimit: 15
   doublePointsActive: 0
+  scoreText: {fileID: 1516676881}
 --- !u!1001 &1583006179
 PrefabInstance:
   m_ObjectHideFlags: 0
