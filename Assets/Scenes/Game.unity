@@ -1448,6 +1448,13 @@ MonoBehaviour:
   greenColor: {r: 0, g: 1, b: 0, a: 1}
   yellowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   blueColor: {r: 0, g: 0, b: 1, a: 1}
+  padding: 8
+  boxSize: 40
+  itemSize: 28
+  itemSpacing: 4
+  gapBoxItems: 6
+  destinationFontSize: 18
+  pointsFontSize: 14
 --- !u!114 &192035790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5902,9 +5909,9 @@ RectTransform:
   - {fileID: 1965856549}
   - {fileID: 1343021571}
   - {fileID: 1516676880}
-  - {fileID: 420647839}
   - {fileID: 192035788}
   - {fileID: 1908884979}
+  - {fileID: 420647839}
   - {fileID: 1381975121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
