@@ -9,20 +9,33 @@ public class OrdersUI : MonoBehaviour
     public Transform ordersPanel;        // El OrdersPanel del Canvas
     public GameObject orderSlotPrefab;   // Prefab del OrderSlot
 
-    [Header("Colores de cajas")]
+    [Header("Colores de cajas (fallback si no hay sprite)")]
     public Color grayColor = Color.gray;
     public Color greenColor = Color.green;
     public Color yellowColor = Color.yellow;
     public Color blueColor = Color.blue;
 
+    [Header("Sprites de cajas por color (opcional)")]
+    public Sprite boxSpriteGray;
+    public Sprite boxSpriteGreen;
+    public Sprite boxSpriteYellow;
+    public Sprite boxSpriteBlue;
+
     [Header("Layout del slot")]
     public float padding = 8f;
-    public float boxSize = 40f;
-    public float itemSize = 28f;
+    public float boxSize = 64f;
+    public float itemSize = 56f;
     public float itemSpacing = 4f;
     public float gapBoxItems = 6f;
-    public int destinationFontSize = 18;
-    public int pointsFontSize = 14;
+    public int destinationFontSize = 26;
+    public int pointsFontSize = 20;
+
+    [Header("Estilo de la tarjeta")]
+    public Color cardFillColor = new Color(0.96f, 0.91f, 0.78f, 1f);   // beige cálido
+    public Color cardBorderColor = new Color(0.55f, 0.40f, 0.22f, 1f); // marrón borde
+    public Vector2 cardBorderDistance = new Vector2(2f, -2f);
+    public Color cardShadowColor = new Color(0f, 0f, 0f, 0.35f);
+    public Vector2 cardShadowDistance = new Vector2(3f, -3f);
 
     private List<GameObject> activeSlots = new List<GameObject>();
     private HashSet<GameObject> laidOut = new HashSet<GameObject>();
@@ -69,6 +82,45 @@ public class OrdersUI : MonoBehaviour
         RectTransform items = slot.transform.Find("ItemsContainer") as RectTransform;
         RectTransform dest = slot.transform.Find("DestinationText") as RectTransform;
         RectTransform pts = slot.transform.Find("PointsText") as RectTransform;
+
+        // ---- Fondo beige + borde + sombrita en cada tarjeta ----
+        {
+            Image bg = slot.GetComponent<Image>();
+            if (bg == null) bg = slot.AddComponent<Image>();
+            bg.sprite = null;                  // rectángulo sólido (sprite UI default)
+            bg.color = cardFillColor;
+            bg.type = Image.Type.Simple;
+            bg.raycastTarget = false;
+
+            Outline outline = slot.GetComponent<Outline>();
+            if (outline == null) outline = slot.AddComponent<Outline>();
+            outline.effectColor = cardBorderColor;
+            outline.effectDistance = cardBorderDistance;
+            outline.useGraphicAlpha = true;
+
+            Shadow shadow = slot.GetComponent<Shadow>();
+            // Outline hereda de Shadow, así que pedimos específicamente el Shadow puro
+            Shadow[] allShadows = slot.GetComponents<Shadow>();
+            bool hasPureShadow = false;
+            foreach (Shadow s in allShadows)
+            {
+                if (s.GetType() == typeof(Shadow))
+                {
+                    s.effectColor = cardShadowColor;
+                    s.effectDistance = cardShadowDistance;
+                    s.useGraphicAlpha = true;
+                    hasPureShadow = true;
+                    break;
+                }
+            }
+            if (!hasPureShadow)
+            {
+                Shadow s = slot.AddComponent<Shadow>();
+                s.effectColor = cardShadowColor;
+                s.effectDistance = cardShadowDistance;
+                s.useGraphicAlpha = true;
+            }
+        }
 
         // ---- BoxImage: anclado al CENTRO-IZQUIERDA del slot ----
         if (box != null)
@@ -154,7 +206,17 @@ public class OrdersUI : MonoBehaviour
     void ConfigurarSlot(GameObject slot, OrderData orden)
     {
         Image boxImage = slot.transform.Find("BoxImage").GetComponent<Image>();
-        boxImage.color = GetColorFromEnum(orden.boxColor);
+        Sprite boxSprite = GetSpriteFromEnum(orden.boxColor);
+        if (boxSprite != null)
+        {
+            boxImage.sprite = boxSprite;
+            boxImage.color = Color.white; // mostrar el sprite tal cual
+        }
+        else
+        {
+            boxImage.sprite = null;
+            boxImage.color = GetColorFromEnum(orden.boxColor);
+        }
 
         TMP_Text destText = slot.transform.Find("DestinationText").GetComponent<TMP_Text>();
         destText.text = orden.destination.ToUpper();
@@ -188,6 +250,18 @@ public class OrdersUI : MonoBehaviour
             case OrderData.BoxColor.Yellow: return yellowColor;
             case OrderData.BoxColor.Blue: return blueColor;
             default: return Color.white;
+        }
+    }
+
+    Sprite GetSpriteFromEnum(OrderData.BoxColor boxColor)
+    {
+        switch (boxColor)
+        {
+            case OrderData.BoxColor.Gray: return boxSpriteGray;
+            case OrderData.BoxColor.Green: return boxSpriteGreen;
+            case OrderData.BoxColor.Yellow: return boxSpriteYellow;
+            case OrderData.BoxColor.Blue: return boxSpriteBlue;
+            default: return null;
         }
     }
 }
