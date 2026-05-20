@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +95,322 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Sprites escenario_0
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 4714
+        width: 1570
+        height: 1243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 835772d2478135c47aa78f293d7771f3
+      internalID: -1562422516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_1
+      rect:
+        serializedVersion: 2
+        x: 2314
+        y: 4705
+        width: 1271
+        height: 1211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17fb9108295c3a479ff289898eecf98
+      internalID: 1806034753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_2
+      rect:
+        serializedVersion: 2
+        x: 3853
+        y: 4714
+        width: 1573
+        height: 1243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e134a6f8835b3a644aa1c6c20e25451d
+      internalID: 379387386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_3
+      rect:
+        serializedVersion: 2
+        x: 6016
+        y: 4834
+        width: 870
+        height: 1151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1230b8cdd1d589f479f3188e506a4690
+      internalID: 1362730558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_4
+      rect:
+        serializedVersion: 2
+        x: 7393
+        y: 4834
+        width: 902
+        height: 843
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc5b794f9c37264c9af5ae9f04cd954
+      internalID: 813390972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_5
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 3664
+        width: 810
+        height: 751
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa57f593839f834ea6db151214b39ec
+      internalID: -430251420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_6
+      rect:
+        serializedVersion: 2
+        x: 2093
+        y: 3623
+        width: 741
+        height: 713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 854e96c637ca59446aed61f5b0a9eb36
+      internalID: 1999455006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_7
+      rect:
+        serializedVersion: 2
+        x: 3525
+        y: 3273
+        width: 819
+        height: 1091
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d0616e03e3eb7246bdb80d55e61330d
+      internalID: -343564280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_8
+      rect:
+        serializedVersion: 2
+        x: 5104
+        y: 3125
+        width: 1561
+        height: 1253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f100e508bada2bb45893a1cc47340d38
+      internalID: -1405420851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_9
+      rect:
+        serializedVersion: 2
+        x: 7162
+        y: 3065
+        width: 1805
+        height: 1299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4dc752b0c47c544ba4e7b0d2e263d20
+      internalID: -26653025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_10
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 2485
+        width: 861
+        height: 831
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5c985ded3fb8f428fb9e693ea864f6
+      internalID: 984034810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_11
+      rect:
+        serializedVersion: 2
+        x: 2033
+        y: 1693
+        width: 1063
+        height: 1192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04f140386ae46b4f9ffb4058f0bb28a
+      internalID: -1949736671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_12
+      rect:
+        serializedVersion: 2
+        x: 3865
+        y: 1665
+        width: 1041
+        height: 1202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 285964d6b9198cb4dbed49556ecb7a4b
+      internalID: 570834070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_13
+      rect:
+        serializedVersion: 2
+        x: 2102
+        y: 223
+        width: 1064
+        height: 1161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9863a4598a02797469c6a55c0804964e
+      internalID: 1329833059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites escenario_14
+      rect:
+        serializedVersion: 2
+        x: 3935
+        y: 214
+        width: 1049
+        height: 1152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 694c92efce60c4e469e5d2c3dad03247
+      internalID: -319326463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +421,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sprites escenario_0: -1562422516
+      Sprites escenario_1: 1806034753
+      Sprites escenario_10: 984034810
+      Sprites escenario_11: -1949736671
+      Sprites escenario_12: 570834070
+      Sprites escenario_13: 1329833059
+      Sprites escenario_14: -319326463
+      Sprites escenario_2: 379387386
+      Sprites escenario_3: 1362730558
+      Sprites escenario_4: 813390972
+      Sprites escenario_5: -430251420
+      Sprites escenario_6: 1999455006
+      Sprites escenario_7: -343564280
+      Sprites escenario_8: -1405420851
+      Sprites escenario_9: -26653025
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

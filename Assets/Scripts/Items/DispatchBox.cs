@@ -37,10 +37,16 @@ public class DispatchBox : MonoBehaviour
         {
             Debug.Log("¡Entrega correcta! " + box.order.destination + " - " + box.order.basePoints + " pts");
 
-            // Notificar al ScoreManager (lo crearemos en el siguiente paso)
+            // Notificar al ScoreManager
             if (ScoreManager.Instance != null)
             {
                 ScoreManager.Instance.AddPoints(box.order);
+            }
+
+            // Notificar al OrderManager: la orden se completa al entregar la caja
+            if (OrderManager.Instance != null)
+            {
+                OrderManager.Instance.CompleteOrder(box.order);
             }
 
             // Limpiar caja del inventario y destruirla

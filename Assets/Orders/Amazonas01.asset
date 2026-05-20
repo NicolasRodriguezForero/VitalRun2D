@@ -11,12 +11,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 246313b929f3710498e411c64575dcb1, type: 3}
   m_Name: Amazonas01
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   destination: Amazonas
   boxColor: 1
   requiredItems:
-  - {fileID: 11400000, guid: 47c6763ef222de049a6ef9d758c4ea42, type: 2}
-  - {fileID: 11400000, guid: 10f307b2512f5644286ad9cc54715c5d, type: 2}
   - {fileID: 11400000, guid: 8eeeae4341d243b409df896eded246ad, type: 2}
-  - {fileID: 11400000, guid: 3f578c16ba2818442a112534284356c4, type: 2}
+  - {fileID: 11400000, guid: 10f307b2512f5644286ad9cc54715c5d, type: 2}
+  - {fileID: 11400000, guid: 47c6763ef222de049a6ef9d758c4ea42, type: 2}
+  - {fileID: 11400000, guid: 8071ab1c2d3e4f5a6b7c8d9e0f102030, type: 2}
   basePoints: 300

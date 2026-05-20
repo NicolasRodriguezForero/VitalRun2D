@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dfa5bde6df0e354db68f2b5671ca9f0, type: 3}
-  m_Name: Vendas
+  m_Name: Sabanas
   m_EditorClassIdentifier: 
-  itemName: Vendas
-  itemSprite: {fileID: 21300000, guid: 444d90e15198280409f7813959a36feb, type: 3}
-  category: 0
+  itemName: Sabanas
+  itemSprite: {fileID: 984034810, guid: e016f5f2b668388428f3e28a836ba4b8, type: 3}
+  category: 3

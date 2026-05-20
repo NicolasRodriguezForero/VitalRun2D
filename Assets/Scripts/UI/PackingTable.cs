@@ -125,9 +125,7 @@ public class PackingTable : MonoBehaviour
             Debug.Log("Caja " + currentOrder.boxColor + " lista para " + currentOrder.destination + "!");
         }
 
-        // Notificar al OrderManager
-        OrderManager.Instance.CompleteOrder(currentOrder);
-
+        // La orden se marca como completada al ENTREGAR la caja en el buzón, no aquí.
         // Resetear mesa
         currentOrder = null;
         depositedItems.Clear();
