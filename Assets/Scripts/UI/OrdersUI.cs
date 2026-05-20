@@ -9,17 +9,14 @@ public class OrdersUI : MonoBehaviour
     public Transform ordersPanel;        // El OrdersPanel del Canvas
     public GameObject orderSlotPrefab;   // Prefab del OrderSlot
 
-    [Header("Colores de cajas (fallback si no hay sprite)")]
-    public Color grayColor = Color.gray;
-    public Color greenColor = Color.green;
-    public Color yellowColor = Color.yellow;
-    public Color blueColor = Color.blue;
+    [Header("Sprite general para todas las cajas (se tinta por color)")]
+    public Sprite boxSprite;
 
-    [Header("Sprites de cajas por color (opcional)")]
-    public Sprite boxSpriteGray;
-    public Sprite boxSpriteGreen;
-    public Sprite boxSpriteYellow;
-    public Sprite boxSpriteBlue;
+    [Header("Tintes por color (mismos que Box.cs)")]
+    public Color grayColor = new Color(0.75f, 0.75f, 0.78f);
+    public Color greenColor = new Color(0.35f, 1f, 0.45f);
+    public Color yellowColor = new Color(1f, 0.95f, 0.2f);
+    public Color blueColor = new Color(0.35f, 0.75f, 1f);
 
     [Header("Layout del slot")]
     public float padding = 8f;
@@ -206,17 +203,8 @@ public class OrdersUI : MonoBehaviour
     void ConfigurarSlot(GameObject slot, OrderData orden)
     {
         Image boxImage = slot.transform.Find("BoxImage").GetComponent<Image>();
-        Sprite boxSprite = GetSpriteFromEnum(orden.boxColor);
-        if (boxSprite != null)
-        {
-            boxImage.sprite = boxSprite;
-            boxImage.color = Color.white; // mostrar el sprite tal cual
-        }
-        else
-        {
-            boxImage.sprite = null;
-            boxImage.color = GetColorFromEnum(orden.boxColor);
-        }
+        boxImage.sprite = boxSprite;                       // mismo sprite para todas
+        boxImage.color = GetColorFromEnum(orden.boxColor); // se le aplica el tinte por color
 
         TMP_Text destText = slot.transform.Find("DestinationText").GetComponent<TMP_Text>();
         destText.text = orden.destination.ToUpper();
@@ -253,15 +241,4 @@ public class OrdersUI : MonoBehaviour
         }
     }
 
-    Sprite GetSpriteFromEnum(OrderData.BoxColor boxColor)
-    {
-        switch (boxColor)
-        {
-            case OrderData.BoxColor.Gray: return boxSpriteGray;
-            case OrderData.BoxColor.Green: return boxSpriteGreen;
-            case OrderData.BoxColor.Yellow: return boxSpriteYellow;
-            case OrderData.BoxColor.Blue: return boxSpriteBlue;
-            default: return null;
-        }
-    }
 }
