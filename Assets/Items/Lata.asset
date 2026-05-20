@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lata
   m_EditorClassIdentifier: 
   itemName: Lata
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: f615147bf82c2a84dbe5b866c13721ce, type: 3}
   category: 1
