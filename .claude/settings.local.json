@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "mcp__claude_ai_Notion__notion-search",
-      "mcp__claude_ai_Notion__notion-fetch"
+      "mcp__claude_ai_Notion__notion-fetch",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('Assets/Sprites/Player/Idle-Sheet.png'\\); print\\(im.size\\)\")",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('Assets/Sprites/Player/Idle-Sheet.png'\\); print\\(im.size\\)\")",
+      "Bash(ffprobe -v error -show_entries stream=width,height -of csv=p=0 \"Assets/Sprites/Player/Idle-Sheet.png\")",
+      "Bash(python *)"
     ]
   }
 }

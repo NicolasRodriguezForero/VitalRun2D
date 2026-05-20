@@ -2554,6 +2554,7 @@ GameObject:
   - component: {fileID: 394161473}
   - component: {fileID: 394161474}
   - component: {fileID: 394161475}
+  - component: {fileID: 394161476}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2674,7 +2675,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 4334cb75c5b57bd4e9ec255a3388974d, type: 3}
+  m_Sprite: {fileID: -2145911815, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2814,13 +2815,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90e1d578e1c1bfd4ba8e4f31cd763260, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   maxSlots: 3
   velocidadDuracion: 5
   velocidadMultiplicador: 1.5
   carritoDuracion: 15
   carritoMaxItems: 2
+--- !u!114 &394161476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394161466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1da99aa55aaee004444555566667777, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  idleUp:
+  - {fileID: -2006969683, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: -2040521438, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: 449636039, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: -914098492, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: 857727456, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  idleDown:
+  - {fileID: -2145911815, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: 1385179190, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: 1059079735, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: 83966821, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: -583529514, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  idleRight:
+  - {fileID: -1022429059, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: -1619684193, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: 1696984886, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: 1093932664, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  - {fileID: 1018023714, guid: 23bb6d2018100334aa7523b78bd49456, type: 3}
+  frameDuration: 0.18
+  initialFacing: 0
+  movementThreshold: 0.02
+  scaleUp: 1
+  scaleDown: 1.08
+  scaleRight: 1
 --- !u!4 &396473150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5041984445402776629, guid: 89d37cbd4a30e7542b2c3a1b4286ae78, type: 3}
