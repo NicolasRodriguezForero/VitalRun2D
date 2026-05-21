@@ -85,19 +85,4 @@ public class GameTimer : MonoBehaviour
     {
         isRunning = false;
     }
-
-    public void AddTime(float seconds)
-    {
-        timeRemaining += seconds;
-
-        // Si la suma saca el tiempo del rango de warning, restaurar color
-        if (timeRemaining > warningTime)
-        {
-            timerText.color = normalColor;
-            blinkOn = true;
-            blinkTimer = 0f;
-        }
-
-        UpdateTimerDisplay();
-    }
 }
