@@ -7189,6 +7189,7 @@ MonoBehaviour:
   resultsPanel: {fileID: 420647838}
   finalScoreText: {fileID: 1007428886}
   ordersCompletedText: {fileID: 212778071}
+  mensajeCierreText: {fileID: 0}
 --- !u!4 &686864564
 Transform:
   m_ObjectHideFlags: 0
@@ -10695,7 +10696,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1381975120}
   volumeSlider: {fileID: 1320514515}
-  mainMenuSceneName: MainMenu
 --- !u!1 &1098607161
 GameObject:
   m_ObjectHideFlags: 0

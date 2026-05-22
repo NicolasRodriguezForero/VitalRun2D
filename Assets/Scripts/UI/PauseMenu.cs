@@ -1,15 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     [Header("Referencias")]
     public GameObject pausePanel;     // El PausePanel
     public Slider volumeSlider;       // El VolumeSlider
-
-    [Header("Escenas")]
-    public string mainMenuSceneName = "MainMenu";
 
     private bool isPaused = false;
 
@@ -50,10 +46,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;   // reanuda el juego
     }
 
+    // Enlazar al botón "Volver al menú" del PausePanel en el Inspector
     public void GoToMainMenu()
     {
-        Time.timeScale = 1f;   // MUY importante: restaurar antes de cambiar de escena
-        SceneManager.LoadScene(mainMenuSceneName);
+        SceneController.LoadMainMenu();   // SceneController ya restaura timeScale
     }
 
     public void SetVolume(float value)
