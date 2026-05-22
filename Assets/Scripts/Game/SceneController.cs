@@ -21,9 +21,23 @@ public class SceneController : MonoBehaviour
     // Instancia singleton para poder lanzar coroutines
     private static SceneController instance;
 
+    // Se auto-crea si no existe (permite entrar desde cualquier escena)
+    private static SceneController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                var go = new GameObject("SceneController");
+                instance = go.AddComponent<SceneController>();
+            }
+            return instance;
+        }
+    }
+
     void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
@@ -34,10 +48,10 @@ public class SceneController : MonoBehaviour
 
     // ── Métodos públicos (llamar desde botones) ───────────────────────────────
 
-    public static void LoadMainMenu() => instance.StartLoad(SCENE_MAIN_MENU);
-    public static void LoadTutorial() => instance.StartLoad(SCENE_TUTORIAL);
-    public static void LoadGame()     => instance.StartLoad(SCENE_GAME);
-    public static void ReloadGame()   => instance.StartLoad(SceneManager.GetActiveScene().name);
+    public static void LoadMainMenu() => Instance.StartLoad(SCENE_MAIN_MENU);
+    public static void LoadTutorial() => Instance.StartLoad(SCENE_TUTORIAL);
+    public static void LoadGame()     => Instance.StartLoad(SCENE_GAME);
+    public static void ReloadGame()   => Instance.StartLoad(SceneManager.GetActiveScene().name);
 
     public static void Quit()
     {
