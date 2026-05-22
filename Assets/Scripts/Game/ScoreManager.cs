@@ -65,6 +65,13 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("+" + finalPoints + " pts (combo: " + currentCombo + ", multiplicador: " + multiplier + "x) | Total: " + totalScore);
     }
 
+    public void AddPoints(int points)
+    {
+        totalScore += points;
+        if (totalScore < 0) totalScore = 0;
+        UpdateScoreDisplay();
+    }
+
     public void BreakCombo()
     {
         if (currentCombo > 0)

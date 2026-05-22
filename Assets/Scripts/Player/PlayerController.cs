@@ -130,6 +130,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (inv.GetCurrentItem() == null) return;
+        ScoreManager.Instance.AddPoints(-100);
+        ScoreManager.Instance.BreakCombo();
         inv.RemoveItem();
         Debug.Log("Dropped item");
     }

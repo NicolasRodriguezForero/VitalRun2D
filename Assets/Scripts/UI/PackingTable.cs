@@ -69,6 +69,7 @@ public class PackingTable : MonoBehaviour
         {
             depositedItems.Add(currentItem);
             playerInventory.RemoveItem();
+            ScoreManager.Instance.AddPoints(100);
             Debug.Log("Depositado: " + currentItem.itemName + " (" + depositedItems.Count + "/" + currentOrder.requiredItems.Count + ")");
 
             if (depositedItems.Count == currentOrder.requiredItems.Count)
