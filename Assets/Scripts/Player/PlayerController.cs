@@ -100,7 +100,37 @@ public class PlayerController : MonoBehaviour
         if (!context.performed) return;
 
         PlayerInventory inv = GetComponent<PlayerInventory>();
-        if (inv != null) inv.RemoveItem();
+        if (inv == null) return;
+
+        Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+
+        if (inv.GetCurrentItem() != null)
+        {
+            foreach (Collider2D col in nearby)
+            {
+                PackingTable table = col.GetComponent<PackingTable>();
+                if (table != null)
+                {
+                    table.TryDeposit();
+                    return;
+                }
+            }
+        }
+
+        if (inv.GetCurrentBox() != null)
+        {
+            foreach (Collider2D col in nearby)
+            {
+                DispatchBox dispatch = col.GetComponent<DispatchBox>();
+                if (dispatch != null)
+                {
+                    dispatch.TryDeliver();
+                    return;
+                }
+            }
+        }
+
+        inv.RemoveItem();
         Debug.Log("Dropped item");
     }
 
